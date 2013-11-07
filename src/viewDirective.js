@@ -79,8 +79,8 @@ function $ViewDirective(   $state,   $compile,   $controller,   $injector,   $an
               angular.equals(locals.$$state, viewLocals.$$state) &&
               angular.equals(locals.$stateParams, viewLocals.$stateParams)) ) return;
 
-          // Preserving current view and scope if current $template is '='.
-          if (locals && locals.$template === '=') return;
+          // Preserving current view and scope if not specifically set.
+          if (angular.isUndefined(locals) || angular.isUndefined(locals.$template)) return;
 
           var render = renderer(animate && doAnimate);
 
